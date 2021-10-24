@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "App web phones",
     "scripts": {
-        "start": "node ./app.js",
+        "start": "node ./bin/www",
         "dev": "nodemon ./bin/www"
     },
     "dependencies": {

@@ -38,18 +38,30 @@ const updatePhone = (id, {
     ram
 }) => {
     return new Promise((resolve, reject) => {
-        db.query('UPDATE phone SET  name = ? , manufacturer = ?, description = ?, color = ? , price= ?, imageFileName= ?, screen= ?,  processor= ?, ram= ? WHERE id = ?;', [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
+        db.query('UPDATE phone SET name = ? , manufacturer = ?, description = ?, color = ? , price= ?, imageFileName= ?, screen= ?,  processor= ?, ram= ? WHERE id = ?;', [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
             if (err) reject(err);
             resolve(row);
         })
     })
 }
-
+const deleteById = (pProductoId) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            "delete from phone where id = ?",
+            [pProductoId],
+            (err, result) => {
+                if (err) reject(err);
+                resolve(result);
+            }
+        );
+    });
+};
 
 module.exports = {
     getByIdPhone,
     updatePhone,
-    createPhone
+    createPhone,
+    deleteById
 }
 
 /*

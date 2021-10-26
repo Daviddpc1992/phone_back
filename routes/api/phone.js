@@ -3,20 +3,9 @@ const router = require('express').Router();
 const {
     getByIdPhone,
     createPhone,
-    updatePhone
+    updatePhone,
+    deleteById,
 } = require('../../models/phone.model');
-
-// router.get("/:id", (req, res) => {
-//     getByIdPhone(req.params.id)
-//         .then(result => {
-//             res.json(result)
-//         })
-//         .catch(error => {
-//             res.json({
-//                 error: error.massage
-//             })
-//         });
-// });
 
 router.get('/:id', async (req, res) => {
     try {
@@ -25,11 +14,11 @@ router.get('/:id', async (req, res) => {
         res.json(producto)
    
       } else {
-        ('este ID es mentira')
+        ('este ID no encontrado')
       }
     }
     catch(error) {
-      res.json('Error mu chungo')
+      res.json('error')
     }
   })
 
@@ -55,6 +44,10 @@ router.put('/:id', async (req, res) => {
             error: err.massage
         });
     }
+});
+router.delete("/delete/:Id", async (req, res) => {
+  const result = await deleteById(req.params.productosId);
+  res.json(result);
 });
 
 module.exports = router;

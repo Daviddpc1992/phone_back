@@ -19,7 +19,7 @@ const createPhone = ({
     ram
 }) => {
     return new Promise((resolve, reject) => {
-        db.query('INSERT INTO heroku_71e322468e54ac5.phone (name, manufacturer, description, color ,price ,imageFile,screen ,processor ,ram) VALUES (?,?,?,?,?,?,?,?,?);', [name, manufacturer, description, color, price, imageFile, screen, processor, ram], (err, row) => {
+        db.query('INSERT INTO heroku_71e322468e54ac5.phone (name, manufacturer, description, color, price, imageFile, screen, processor, ram) VALUES (?,?,?,?,?,?,?,?,?);', [name, manufacturer, description, color, price, imageFile, screen, processor, ram], (err, row) => {
             if (err) reject(err);
             resolve(row)
         })
@@ -27,18 +27,10 @@ const createPhone = ({
 }
 
 const updatePhone = (id, {
-    name,
-    manufacturer,
-    description,
-    color,
-    price,
-    imageFile,
-    screen,
-    processor,
-    ram
+    name, manufacturer, description, color, price, imageFile, screen, processor, ram
 }) => {
     return new Promise((resolve, reject) => {
-        db.query('UPDATE heroku_71e322468e54ac5.phone SET name = ? , manufacturer = ?, description = ?, color = ? , price= ?, imageFileName= ?, screen= ?,  processor= ?, ram= ? WHERE id = ?;', [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
+        db.query("UPDATE heroku_71e322468e54ac5.phone SET name = ? , manufacturer = ?, description = ?, color = ? , price = ?, imageFile = ?, screen = ?,  processor = ?, ram = ? where id = ?;", [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
             if (err) reject(err);
             resolve(row);
         })

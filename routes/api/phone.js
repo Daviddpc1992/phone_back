@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 router.delete("/delete/:Id", async (req, res) => {
-  const result = await deleteById(req.params.productosId);
+  const result = await deleteById(req.params.Id);
   res.json(result);
 });
 

@@ -1,6 +1,6 @@
 const getByIdPhone = (id) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT * FROM phones.phone WHERE id = ?', [id], (err, row) => {
+        db.query('SELECT * FROM heroku_71e322468e54ac5.phone WHERE id = ?', [id], (err, row) => {
             if (err) reject(err);
             resolve(row);
         })
@@ -19,7 +19,7 @@ const createPhone = ({
     ram
 }) => {
     return new Promise((resolve, reject) => {
-        db.query('INSERT INTO phone (name, manufacturer, description, color ,price ,imageFile,screen ,processor ,ram) VALUES (?,?,?,?,?,?,?,?,?);', [name, manufacturer, description, color, price, imageFile, screen, processor, ram], (err, row) => {
+        db.query('INSERT INTO heroku_71e322468e54ac5.phone (name, manufacturer, description, color ,price ,imageFile,screen ,processor ,ram) VALUES (?,?,?,?,?,?,?,?,?);', [name, manufacturer, description, color, price, imageFile, screen, processor, ram], (err, row) => {
             if (err) reject(err);
             resolve(row)
         })
@@ -38,17 +38,17 @@ const updatePhone = (id, {
     ram
 }) => {
     return new Promise((resolve, reject) => {
-        db.query('UPDATE phone SET name = ? , manufacturer = ?, description = ?, color = ? , price= ?, imageFileName= ?, screen= ?,  processor= ?, ram= ? WHERE id = ?;', [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
+        db.query('UPDATE heroku_71e322468e54ac5.phone SET name = ? , manufacturer = ?, description = ?, color = ? , price= ?, imageFileName= ?, screen= ?,  processor= ?, ram= ? WHERE id = ?;', [name, manufacturer, description, color, price, imageFile, screen, processor, ram, id], (err, row) => {
             if (err) reject(err);
             resolve(row);
         })
     })
 }
-const deleteById = (pProductoId) => {
+const deleteById = (pId) => {
     return new Promise((resolve, reject) => {
         db.query(
-            "delete from phone where id = ?",
-            [pProductoId],
+            "delete from heroku_71e322468e54ac5.phone where id = ?",
+            [pId],
             (err, result) => {
                 if (err) reject(err);
                 resolve(result);
